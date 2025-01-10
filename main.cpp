@@ -2,13 +2,13 @@
 #include <SFML/Graphics.hpp>
 
 int main() {
-    const int WIDTH = 1920;
-    const int HEIGHT = 1080;
+    constexpr int WIDTH = 1920;
+    constexpr int HEIGHT = 1080;
 
     sf::RenderWindow window(sf::VideoMode(WIDTH,HEIGHT), "Algorithm Visualizer");
 
-    const int MAX_BARS = 100;
-    const float BAR_WIDTH = WIDTH / MAX_BARS;
+    constexpr int MAX_BARS = 1000;
+    constexpr float BAR_WIDTH = static_cast<float>(WIDTH) / static_cast<float>(MAX_BARS);
 
     std::vector<sf::RectangleShape> bars (MAX_BARS);
     std::vector<int> heights (MAX_BARS);
@@ -19,6 +19,7 @@ int main() {
         bars[i].setPosition(i * BAR_WIDTH, HEIGHT - static_cast<float>(heights[i]));
         bars[i].setFillColor(sf::Color::White);
     }
+
     while (window.isOpen()) {
         sf::Event event{};
         while (window.pollEvent(event)) {
@@ -26,12 +27,28 @@ int main() {
                 window.close();
             }
         }
-        window.clear(sf::Color::Black);
-        for (auto bar: bars) {
-            window.draw(bar);
-        }
-        window.display();
-    }
+        for (int i = 0; i < MAX_BARS; ++i) {
+            for (int j = i; j < MAX_BARS - 1; ++j) {
+                if (heights[j] > heights[j + 1]) {
+                    std::swap(heights[j], heights[j + 1]);
 
+                    bars[j].setSize(sf::Vector2f{BAR_WIDTH, static_cast<float>(heights[j])});
+                    bars[j].setPosition(j * BAR_WIDTH, HEIGHT - static_cast<float>(heights[j]));
+
+                    bars[j + 1].setSize(sf::Vector2f{BAR_WIDTH, static_cast<float>(heights[j + 1])});
+                    bars[j + 1].setPosition((j + 1) * BAR_WIDTH, HEIGHT - static_cast<float>(heights[j + 1]));
+
+
+                    window.clear(sf::Color::Black);
+                    for (const auto& bar: bars) {
+                        window.draw(bar);
+                    }
+                    window.display();
+
+                    sleep(sf::milliseconds(0));
+                }
+            }
+        }
+    }
     return 0;
 }
