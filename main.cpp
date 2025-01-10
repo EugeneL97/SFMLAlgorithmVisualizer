@@ -7,7 +7,7 @@ int main() {
 
     sf::RenderWindow window(sf::VideoMode(WIDTH,HEIGHT), "Algorithm Visualizer");
 
-    constexpr int MAX_BARS = 1000;
+    constexpr int MAX_BARS = 200;
     constexpr float BAR_WIDTH = static_cast<float>(WIDTH) / static_cast<float>(MAX_BARS);
 
     std::vector<sf::RectangleShape> bars (MAX_BARS);
@@ -29,6 +29,11 @@ int main() {
         }
         for (int i = 0; i < MAX_BARS; ++i) {
             for (int j = i; j < MAX_BARS - 1; ++j) {
+                while (window.pollEvent(event)) {
+                    if (event.type == sf::Event::Closed) {
+                        window.close();
+                    }
+                }
                 if (heights[j] > heights[j + 1]) {
                     std::swap(heights[j], heights[j + 1]);
 
@@ -49,6 +54,11 @@ int main() {
                 }
             }
         }
+        window.clear(sf::Color::Black);
+        for (const auto& bar : bars) {
+            window.draw(bar);
+        }
+        window.display();
     }
     return 0;
 }
