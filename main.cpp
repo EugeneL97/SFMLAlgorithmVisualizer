@@ -1,64 +1,23 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "Sorting.h"
+#include "Render.h"
+
 int main() {
-    constexpr int WIDTH = 1920;
-    constexpr int HEIGHT = 1080;
+    constexpr int SCREEN_WIDTH = 1920;
+    constexpr int SCREEN_HEIGHT = 1080;
+    int totalBars = 0;
 
-    sf::RenderWindow window(sf::VideoMode(WIDTH,HEIGHT), "Algorithm Visualizer");
+    std::cout << "How many bars would you like? ";
+    std::cin >> totalBars;
 
-    constexpr int MAX_BARS = 200;
-    constexpr float BAR_WIDTH = static_cast<float>(WIDTH) / static_cast<float>(MAX_BARS);
+    sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH,SCREEN_HEIGHT), "Algorithm Visualizer");
 
-    std::vector<sf::RectangleShape> bars (MAX_BARS);
-    std::vector<int> heights (MAX_BARS);
+    Render render;
+    Sorting sorting(totalBars, SCREEN_WIDTH, SCREEN_HEIGHT, render);
 
-    for (int i = 0; i < MAX_BARS; ++i) {
-        heights[i] = rand() % HEIGHT;
-        bars[i].setSize(sf::Vector2f{BAR_WIDTH, static_cast<float>(heights[i])});
-        bars[i].setPosition(i * BAR_WIDTH, HEIGHT - static_cast<float>(heights[i]));
-        bars[i].setFillColor(sf::Color::White);
-    }
+    sorting.visualizeBubbleSort(window);
 
-    while (window.isOpen()) {
-        sf::Event event{};
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-        }
-        for (int i = 0; i < MAX_BARS; ++i) {
-            for (int j = i; j < MAX_BARS - 1; ++j) {
-                while (window.pollEvent(event)) {
-                    if (event.type == sf::Event::Closed) {
-                        window.close();
-                    }
-                }
-                if (heights[j] > heights[j + 1]) {
-                    std::swap(heights[j], heights[j + 1]);
-
-                    bars[j].setSize(sf::Vector2f{BAR_WIDTH, static_cast<float>(heights[j])});
-                    bars[j].setPosition(j * BAR_WIDTH, HEIGHT - static_cast<float>(heights[j]));
-
-                    bars[j + 1].setSize(sf::Vector2f{BAR_WIDTH, static_cast<float>(heights[j + 1])});
-                    bars[j + 1].setPosition((j + 1) * BAR_WIDTH, HEIGHT - static_cast<float>(heights[j + 1]));
-
-
-                    window.clear(sf::Color::Black);
-                    for (const auto& bar: bars) {
-                        window.draw(bar);
-                    }
-                    window.display();
-
-                    sleep(sf::milliseconds(0));
-                }
-            }
-        }
-        window.clear(sf::Color::Black);
-        for (const auto& bar : bars) {
-            window.draw(bar);
-        }
-        window.display();
-    }
     return 0;
 }
