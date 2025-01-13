@@ -3,6 +3,7 @@
 
 #include "Sorting.h"
 #include "Render.h"
+#include "Menu.h"
 
 int main() {
     constexpr int SCREEN_WIDTH = 1920;
@@ -13,6 +14,8 @@ int main() {
     std::cin >> totalBars;
 
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH,SCREEN_HEIGHT), "Algorithm Visualizer");
+
+    Menu menu;
 
     Render render;
     Sorting sorting(totalBars, SCREEN_WIDTH, SCREEN_HEIGHT, render);
