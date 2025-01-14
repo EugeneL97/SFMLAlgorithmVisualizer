@@ -15,6 +15,24 @@ bool Render::handleWindowEvents(sf::RenderWindow &window) {
             window.close();
             return false;
         }
+        // Able to quit to menu during sorting (if it's taking too long)
+        if (event.key.code == sf::Keyboard::Escape) {
+            return false;
+        }
     }
     return true;
+}
+
+void Render::waitForUserInput(sf::RenderWindow& window) {
+    sf::Event event{};
+    while (window.waitEvent(event)) {
+        if (event.type == sf::Event::KeyPressed &&
+           (event.key.code == sf::Keyboard::Enter || event.key.code == sf::Keyboard::Escape)) {
+            return;  // Exit on Enter or Escape
+           }
+        if (event.type == sf::Event::Closed) {
+            window.close();
+            return;
+        }
+    }
 }
