@@ -25,9 +25,9 @@ private:
     sf::Color highlightedColor = sf::Color::Yellow;
 public:
     Menu();
-    void drawMenu(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window);
     void moveUp();
     void moveDown();
-    int getSelectedOption();
+    int getSelectedOption() const;
 };
 
