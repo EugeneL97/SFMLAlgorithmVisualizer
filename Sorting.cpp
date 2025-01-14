@@ -41,5 +41,5 @@ void Sorting::visualizeBubbleSort(sf::RenderWindow& window) {
             }
         }
     }
-
+    render.waitForUserInput(window);
 }
