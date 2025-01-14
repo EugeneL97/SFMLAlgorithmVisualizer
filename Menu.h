@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 /* Arrow Up and Arrow Down Navigation
  * Highlight text when currently on it (text is Yellow when highlighted, White otherwise)
  * Once you hit enter and select an option, execute that algorithm
@@ -9,12 +10,14 @@
  *      Should it only create a Sorting object when it selects the algorithm? I think so.
  *          If we expand to Pathfinding, we wouldn't want to create both objects in the menu when we're not using both.
  */
+enum MenuOptions {
+    BUBBLESORT,
+    TEST,
+    EXIT
+};
 class Menu {
 private:
-    enum options {
-        BUBBLESORT
-
-    };
+    std::vector<std::string> options;
     sf::Font font;
     sf::Text menuText;
     int selectedIndex;
