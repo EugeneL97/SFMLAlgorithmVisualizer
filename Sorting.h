@@ -6,7 +6,7 @@
 
 class Sorting {
     std::vector<sf::RectangleShape> bars;
-    std::vector<int> heights;
+    std::vector<float> heights;
     int maxBars;
     float barWidth;
     int screenWidth, screenHeight;

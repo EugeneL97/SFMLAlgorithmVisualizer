@@ -5,7 +5,7 @@
 
 Sorting::Sorting(int maxBars, int screenWidth, int screenHeight, Render &render)
 : maxBars(maxBars), screenWidth(screenWidth), screenHeight(screenHeight), render(render) {
-    barWidth = static_cast<float>(screenWidth) / static_cast<float>(maxBars);
+    barWidth = static_cast<float>(screenWidth) / maxBars;
     bars.resize(maxBars);
     heights.resize(maxBars);
 }
@@ -14,8 +14,8 @@ void Sorting::initializeBars() {
 
     for (int i = 0; i < maxBars; ++i) {
         heights[i] = rand() % screenHeight;
-        bars[i].setSize(sf::Vector2f{barWidth, static_cast<float>(heights[i])});
-        bars[i].setPosition(i * barWidth, screenHeight - static_cast<float>(heights[i]));
+        bars[i].setSize(sf::Vector2f{barWidth, (heights[i])});
+        bars[i].setPosition(i * barWidth, screenHeight - heights[i]);
         bars[i].setFillColor(sf::Color::White);
     }
 }
@@ -29,11 +29,11 @@ void Sorting::visualizeBubbleSort(sf::RenderWindow& window) {
             if (heights[j] > heights[j + 1]) {
                 std::swap(heights[j], heights[j + 1]);
 
-                bars[j].setSize(sf::Vector2f{barWidth, static_cast<float>(heights[j])});
-                bars[j].setPosition(j * barWidth, screenHeight - static_cast<float>(heights[j]));
+                bars[j].setSize(sf::Vector2f{barWidth, (heights[j])});
+                bars[j].setPosition(j * barWidth, screenHeight - heights[j]);
 
-                bars[j + 1].setSize(sf::Vector2f{barWidth, static_cast<float>(heights[j + 1])});
-                bars[j + 1].setPosition((j + 1) * barWidth, screenHeight - static_cast<float>(heights[j + 1]));
+                bars[j + 1].setSize(sf::Vector2f{barWidth, heights[j + 1]});
+                bars[j + 1].setPosition((j + 1) * barWidth, screenHeight - heights[j + 1]);
 
                 render.renderBars(window, bars);
 
