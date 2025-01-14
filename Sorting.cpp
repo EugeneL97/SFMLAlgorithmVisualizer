@@ -22,7 +22,7 @@ void Sorting::initializeBars() {
 void Sorting::visualizeBubbleSort(sf::RenderWindow& window) {
     initializeBars();
     for (int i = 0; i < maxBars; ++i) {
-        for (int j = i; j < maxBars - 1; ++j) {
+        for (int j = 0; j < maxBars - 1; ++j) {
             if (!render.handleWindowEvents(window)) {
                 return;
             }
@@ -37,8 +37,9 @@ void Sorting::visualizeBubbleSort(sf::RenderWindow& window) {
 
                 render.renderBars(window, bars);
 
-                sleep(sf::milliseconds(10));
+                sleep(sf::milliseconds(5));
             }
         }
     }
+
 }
