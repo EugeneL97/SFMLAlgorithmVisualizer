@@ -11,7 +11,6 @@ Sorting::Sorting(int maxBars, int screenWidth, int screenHeight, Render &render)
 }
 
 void Sorting::initializeBars() {
-
     for (int i = 0; i < maxBars; ++i) {
         heights[i] = rand() % screenHeight;
         bars[i].setSize(sf::Vector2f{barWidth, (heights[i])});
@@ -19,6 +18,7 @@ void Sorting::initializeBars() {
         bars[i].setFillColor(sf::Color::White);
     }
 }
+
 void Sorting::visualizeBubbleSort(sf::RenderWindow& window) {
     initializeBars();
     for (int i = 0; i < maxBars; ++i) {
@@ -32,12 +32,17 @@ void Sorting::visualizeBubbleSort(sf::RenderWindow& window) {
                 bars[j].setSize(sf::Vector2f{barWidth, (heights[j])});
                 bars[j].setPosition(j * barWidth, screenHeight - heights[j]);
 
+                // Track bar being swapped
+                bars[j + 1].setFillColor(sf::Color::Red);
                 bars[j + 1].setSize(sf::Vector2f{barWidth, heights[j + 1]});
                 bars[j + 1].setPosition((j + 1) * barWidth, screenHeight - heights[j + 1]);
 
                 render.renderBars(window, bars);
 
-                sleep(sf::milliseconds(5));
+                // Reset to white as to not leave trace red bars behind
+                bars[j + 1].setFillColor(sf::Color::White);
+
+                sleep(sf::milliseconds(50));
             }
         }
     }
