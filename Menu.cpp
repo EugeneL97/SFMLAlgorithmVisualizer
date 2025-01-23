@@ -1,8 +1,10 @@
 #include "Menu.h"
 
-Menu::Menu() : selectedIndex(0){
+Menu::Menu() : selectedIndex(0)
+{
     options = {"Bubble Sort", "Test", "Exit"};
-    if (!font.loadFromFile("../fonts/Coolvetica-Rg.otf")) {
+    if (!font.loadFromFile("../fonts/Coolvetica-Rg.otf"))
+    {
         std::cout << "We gotta blow this whole thing up...";
     }
     menuText.setFont(font);
@@ -11,7 +13,8 @@ Menu::Menu() : selectedIndex(0){
 }
 
 void Menu::draw(sf::RenderWindow& window) {
-    for (size_t i = 0; i < options.size(); ++i) {
+    for (size_t i = 0; i < options.size(); ++i)
+        {
         menuText.setString(options[i]);
         menuText.setPosition(100, 100 + i * 100);
         menuText.setFillColor(i == selectedIndex ? highlightedColor : defaultColor);
@@ -19,19 +22,22 @@ void Menu::draw(sf::RenderWindow& window) {
     }
 }
 
-void Menu::moveUp() {
+void Menu::moveUp()
+{
     if (selectedIndex > 0) {
         selectedIndex--;
     }
 }
 
-void Menu::moveDown() {
+void Menu::moveDown()
+{
     if (selectedIndex < options.size() - 1) {
         selectedIndex++;
     }
 }
 
-int Menu::getSelectedOption() const {
+int Menu::getSelectedOption() const
+{
     return selectedIndex;
 }
 

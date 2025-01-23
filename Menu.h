@@ -10,12 +10,14 @@
  *      Should it only create a Sorting object when it selects the algorithm? I think so.
  *          If we expand to Pathfinding, we wouldn't want to create both objects in the menu when we're not using both.
  */
-enum MenuOptions {
+enum MenuOptions
+{
     BUBBLESORT,
-    TEST,
+    BOGOSORT,
     EXIT
 };
-class Menu {
+class Menu
+{
 private:
     std::vector<std::string> options;
     sf::Font font;
