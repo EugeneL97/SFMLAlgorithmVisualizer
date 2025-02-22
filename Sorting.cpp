@@ -85,7 +85,19 @@ void Sorting::selectionSort(sf::RenderWindow &window)
 
 void Sorting::insertionSort(sf::RenderWindow &window)
 {
-
+    initializeBars();
+    for (int i = 1; i < maxBars; ++i)
+    {
+        float key = heights[i];
+        int j = i - 1;
+        while (j >= 0 && heights[j] > key)
+        {
+            swapBars(window, j, j + 1, 10);
+            j -= 1;
+        }
+        heights[j + 1] = key;
+    }
+    render.waitForUserInput(window);
 }
 
 void Sorting::mergeSort(sf::RenderWindow &window)

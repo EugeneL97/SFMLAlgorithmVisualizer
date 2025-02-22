@@ -12,8 +12,9 @@
  */
 enum MenuOptions
 {
-    BUBBLESORT,
+    BUBBLE_SORT,
     SELECTION_SORT,
+    INSERTION_SORT,
     EXIT
 };
 class Menu

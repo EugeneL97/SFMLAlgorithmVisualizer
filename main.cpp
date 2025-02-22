@@ -37,7 +37,7 @@ int main()
                     {
                         int selected = menu.getSelectedOption();
                         switch (selected) {
-                            case BUBBLESORT:
+                            case BUBBLE_SORT:
                                 currentState = SORTING;
                                 sorting.bubbleSort(window);
                                 currentState = MENU;
@@ -45,6 +45,11 @@ int main()
                             case SELECTION_SORT:
                                 currentState = SORTING;
                                 sorting.selectionSort(window);
+                                currentState = MENU;
+                                break;
+                            case INSERTION_SORT:
+                                currentState = SORTING;
+                                sorting.insertionSort(window);
                                 currentState = MENU;
                                 break;
                             case EXIT:
