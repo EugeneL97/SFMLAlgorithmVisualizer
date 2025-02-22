@@ -8,7 +8,7 @@ I wanted to challenge myself by combining my C++ skills with SFML while creating
 
 ## Current Features
 
-- **Bubble Sort Visualization:** Watch how Bubble Sort operates step by step.
+- **Sorting Visualization:** Watch how various sorting algorithms operate step by step.
 - **Interactive Controls:** Play, pause, and eventually go back to the menu to pick another algorithm.
 - **Clean and Readable Code:** I prioritize readability to make it easier to understand and maintain.
 
