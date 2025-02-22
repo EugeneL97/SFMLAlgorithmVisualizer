@@ -42,6 +42,11 @@ int main()
                                 sorting.bubbleSort(window);
                                 currentState = MENU;
                                 break;
+                            case SELECTION_SORT:
+                                currentState = SORTING;
+                                sorting.selectionSort(window);
+                                currentState = MENU;
+                                break;
                             case EXIT:
                                 window.close();
                                 break;

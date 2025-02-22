@@ -2,7 +2,7 @@
 
 Menu::Menu() : selectedIndex(0)
 {
-    options = {"Bubble Sort", "Test", "Exit"};
+    options = {"Bubble Sort", "Selection Sort", "Exit"};
     if (!font.loadFromFile("../fonts/Coolvetica-Rg.otf"))
     {
         std::cout << "We gotta blow this whole thing up...";

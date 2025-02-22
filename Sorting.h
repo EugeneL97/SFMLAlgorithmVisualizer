@@ -15,6 +15,7 @@ class Sorting
 public:
     Sorting(int maxBars, int screenWidth, int screenHeight, Render& render);
     void initializeBars();
+    void swapBars(sf::RenderWindow& window, size_t idx1, size_t idx2, sf::Int32 sleepDur);
     void bubbleSort(sf::RenderWindow& window);
     void selectionSort(sf::RenderWindow& window);
     void insertionSort(sf::RenderWindow& window);
