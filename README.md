@@ -1,6 +1,6 @@
 # SFML Algorithm Visualizer
 
-This project is an algorithm visualizer built using SFML. The goal is to create an interactive and educational tool that allows users to explore different algorithms visually. I’m starting with sorting algorithms and eventually plan to add pathfinding algorithms. 
+The goal is to create an interactive and educational tool that allows users to explore different algorithms visually. I’m starting with sorting algorithms and eventually plan to add pathfinding algorithms. 
 
 ## Why This Project?
 
