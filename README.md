@@ -43,4 +43,4 @@ make
 ```
 ### Submit a Pull Request
 
-If you'd like to contribute, fork the repo, and open a pull request to the 'main' branch!
+If you'd like to contribute, fork the repo, and open a pull request to the 'master' branch!
