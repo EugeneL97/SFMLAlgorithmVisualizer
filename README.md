@@ -8,6 +8,10 @@ I've always been a visual learner, and when I first studied Data Structures and 
 
 By observing best-case, average-case, and worst-case scenarios in action, the goal is to solidify the core concepts and highlight why different algorithms are suited for different tasks. Understanding these trade-offs visually can reinforce the idea that no single algorithm is universally the best. Each is a tool optimized for a specific job.
 
+## Why SFML?
+
+I chose SFML because of its straightforward implementation and learning curve. It lets me focus on implementing algorithms without being overly concerned by the extra boilerplate code of lower level graphics engines, while reinforcing my C++ knowledge.
+
 ## Current Features
 
 - **Sorting Visualization:** Watch how various sorting algorithms operate step by step.
@@ -22,9 +26,14 @@ I’m planning to:
 - Experiment with new UI/UX ideas to allow for more flexibility and practicality from the user's perspective.
 - Translating this into a web app (Three.js?) to make it accessible without requiring SFML installation.
   
-## Getting Started
+## Contributing
+### Clone the Repo
 
-You’ll need to have SFML installed on your system. Once that’s set up, just clone this repo and run the following:
+```bash
+git clone https://github.com/EugeneL97/SFMLAlgorithmVisualizer
+cd SFMLAlgorithmVisualizer
+```
+### Build and Run the Project
 
 ```bash
 mkdir build && cd build
@@ -32,10 +41,6 @@ cmake ..
 make
 ./SFMLAlgorithmVisualizer
 ```
-## Why SFML?
+### Submit a Pull Request
 
-I chose SFML because of its straightforward implementation and learning curve. It lets me focus on implementing algorithms without being overly concerned by the extra boilerplate code of lower level graphics engines, while reinforcing my C++ knowledge.
-
-## Contributing
-
-If you have suggestions for implementation, I'd love to hear them! 
+If you'd like to contribute, fork the repo, and open a pull request to the 'main' branch!
